@@ -1,0 +1,173 @@
+: << 'COMMENT'
+Assignment 1
+CS-4720 | Compiler Design
+
+This was an assignment where I created a general translator and a pushdown translator in C++. 
+
+--------------------------- PROGRAM OVERVIEW -----------------------------------------------------------------
+1. Run file with transducer:
+      - Each transducer a "grail-like" format .txt file |--> ./main -(word) -(text file)
+      - Extract information from the text file: start state, final states, struct for each translation 
+2. Create General Translator object:
+      - Each time the program is run, a new object is created for the transducer
+      - Constructor takes in start state, tranitions, final states
+3. Translate and Output:
+      - Runs class method (Translate) that runs and gives the translated word
+      - Error log implementation for illegal input alphabets / unrecognized input
+
+
+INPUT FILE FORMAT (.txt)
+
+General Translator :- 
+(START) [start state number]
+[current state] [input character] [output word] [next state]
+(END) [end state number]
+
+Pushdown Translator :-
+(START) [start state number]
+[current state] [input character] [output word] [stack push] [stack pop] [next state]
+(END) [end state number]
+
+--------------------------------------------------------------------------------------------------------------
+COMMENT
+
+echo "Compiling.."
+g++ A1-CD.cpp -o main
+
+chmod +x main
+
+echo "Running General Translators...."
+
+echo "***** Transducer 1 ****"
+echo "-> Language accepting words with a and b, then flipping the letters in translation."
+
+echo "Test 1"
+echo "Input: abababababab"
+./main gen gt1.txt abababababab
+
+echo "Test 2"
+echo "Input: bbb"
+./main gen gt1.txt bbb
+
+echo "Test 3"
+echo "Input: aaa"
+./main gen gt1.txt aaa
+
+echo "Test 4"
+echo "Input: bcbca"
+./main gen gt1.txt bcbca
+
+echo "***** Transducer 2 ****"
+echo "-> Language accepting words with a and be, then doubling a's while b's remaing the same."
+
+echo "Test 1"
+echo "Input: ab"
+./main gen gt2.txt ab 
+
+echo "Test 2"
+echo "2. Input: abbaa"
+./main gen gt2.txt abbaa
+
+echo "Test 3"
+echo "Input: cdb"
+./main gen gt2.txt cdb
+
+echo "***** Transducer 3 ****"
+echo "-> Language accepting 1 to 7 0's, and translating the number of 0's input to it's value in binary."
+
+echo "Test 1"
+echo "Input: 0"
+./main gen gt3.txt 0 
+
+echo "Test 2"
+echo "Input: 00000"
+./main gen gt3.txt 00000
+
+echo "Test 3"
+echo "Input: 100"
+./main gen gt3.txt 100
+
+echo "***** Transducer 4 ****"
+echo "-> Language accepts only even number of a's and translates each a to X."
+
+echo "Test 1"
+echo "Input: aa"
+./main gen gt4.txt aa
+
+echo "Test 2"
+echo "Input: a"
+./main gen gt4.txt a
+
+echo "Test 3"
+echo "Input: aaaaaa"
+./main gen gt4.txt aaaaaa
+
+echo "***** Transducer 5 ****"
+echo "-> Language accepts only binary code and the translation inverts bits."
+
+echo "Test 1"
+echo "Input: 01"
+./main gen gt5.txt 01 
+
+echo "Test 2"
+echo "Input: 2"
+./main gen gt5.txt 2
+
+echo "Test 3"
+echo "Input: 1111100000111"
+./main gen gt5.txt 1111100000111
+
+echo "---------------------------------------"
+
+echo "Running Pushdown Translators...."
+
+echo "***** Pushdown Transducer 1 ****"
+echo "-> Language that accepts equal number of a's and b's, and then translates all a to X and b to Y "
+
+echo "Test 1"
+echo "Input: aaabbb"
+./main pdt pt1.txt aaabbb
+
+echo "Test 2"
+echo "Input: aa"
+./main pdt pt1.txt aa
+
+echo "Test 3"
+echo "Input: ab"
+./main pdt pt1.txt ab
+
+echo "Test 4"
+echo "Input: aab"
+./main pdt pt1.txt aab
+
+echo "***** Pushdown Transducer 2 ****"
+echo "-> Language that accepts equal number of a's and b's, then translates them to same number of Y's only"
+
+echo "Test 1"
+echo "Input: aaabbb"
+./main pdt pt2.txt aaabbb
+
+echo "Test 2"
+echo "2. Input: aa"
+./main pdt pt2.txt aa
+
+echo "Test 3"
+echo "Input: ab"
+./main pdt pt2.txt ab
+
+echo "***** Pushdown Transducer 3 ****"
+echo "-> Language accepts an equal number of a's and b's and translates it into same number of c's only."
+
+echo "Test 1"
+echo "Input: aabb"
+./main pdt pt3.txt aabb
+
+echo "Test 2"
+echo "Input: ab"
+./main pdt pt3.txt ab
+
+echo "Test 3"
+echo "Input: baa"
+./main pdt pt3.txt baa
+
+echo "---------------------------------------"

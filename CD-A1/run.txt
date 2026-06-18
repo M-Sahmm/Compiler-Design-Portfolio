@@ -1,0 +1,99 @@
+Compiling..
+Running General Translators....
+***** Transducer 1 ****
+-> Language accepting words with a and b, then flipping the letters in translation.
+Test 1
+Input: abababababab
+Output: babababababa
+Test 2
+Input: bbb
+Output: aaa
+Test 3
+Input: aaa
+Output: bbb
+Test 4
+Input: bcbca
+word not legal!
+***** Transducer 2 ****
+-> Language accepting words with a and be, then doubling a's while b's remaing the same.
+Test 1
+Input: ab
+word not legal!
+Test 2
+2. Input: abbaa
+word not legal!
+Test 3
+Input: cdb
+word not legal!
+***** Transducer 3 ****
+-> Language accepting 1 to 7 0's, and translating the number of 0's input to it's value in binary.
+Test 1
+Input: 0
+Output: 1
+Test 2
+Input: 00000
+Output: 101
+Test 3
+Input: 100
+word not legal!
+***** Transducer 4 ****
+-> Language accepts only even number of a's and translates each a to X.
+Test 1
+Input: aa
+Output: XX
+Test 2
+Input: a
+word not legal!
+Test 3
+Input: aaaaaa
+Output: XXXXXX
+***** Transducer 5 ****
+-> Language accepts only binary code and the translation inverts bits.
+Test 1
+Input: 01
+Output: 10
+Test 2
+Input: 2
+word not legal!
+Test 3
+Input: 1111100000111
+Output: 0000011111000
+---------------------------------------
+Running Pushdown Translators....
+***** Pushdown Transducer 1 ****
+-> Language that accepts equal number of a's and b's, and then translates all a to X and b to Y 
+Test 1
+Input: aaabbb
+Output: xxxyyy
+Test 2
+Input: aa
+word not legal!
+Test 3
+Input: ab
+Output: xy
+Test 4
+Input: aab
+word not legal!
+***** Pushdown Transducer 2 ****
+-> Language that accepts equal number of a's and b's, then translates them to same number of Y's only
+Test 1
+Input: aaabbb
+Output: YYY
+Test 2
+2. Input: aa
+word not legal!
+Test 3
+Input: ab
+Output: Y
+***** Pushdown Transducer 3 ****
+-> Language accepts an equal number of a's and b's and translates it into same number of c's only.
+Test 1
+Input: aabb
+Output: cc
+Test 2
+Input: ab
+Output: c
+Test 3
+Input: baa
+word not legal!
+---------------------------------------
